@@ -24,6 +24,6 @@ This project is a simple audio player web application built using React. It allo
 To run the project locally, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Navigate to the `frontend` directory.
+2. Navigate to the directory.
 3. Install dependencies using `npm install`.
 4. Start the development server using `npm start`.
