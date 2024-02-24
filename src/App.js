@@ -79,7 +79,7 @@ const App = () => {
           }}
         >
           <Title style={{ color: "#fff", fontSize: "2rem" }}>
-            Spotify Player
+            Audio Player
           </Title>
         </div>
       </Header>
