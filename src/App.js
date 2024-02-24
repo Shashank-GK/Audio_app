@@ -9,12 +9,12 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #181818; /* Spotify background color */
+  background-color: #181818;
   color: #fff;
 `;
 
 const Header = styled.header`
-  background-color: #282828; /* Spotify header background color */
+  background-color: #282828; 
   padding: 20px;
   width: 100%;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -29,7 +29,7 @@ const Title = styled.h1`
 const FileInput = styled.label`
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #1db954; /* Spotify green */
+  background-color: #1db954; 
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
