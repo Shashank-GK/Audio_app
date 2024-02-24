@@ -1,20 +1,59 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import styled, { keyframes } from "styled-components";
 import Playlist from "./components/Playlist";
 import NowPlaying from "./components/NowPlaying";
 
-function App() {
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #181818; /* Spotify background color */
+  color: #fff;
+`;
+
+const Header = styled.header`
+  background-color: #282828; /* Spotify header background color */
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+const Title = styled.h1`
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+`;
+
+const FileInput = styled.label`
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #1db954; /* Spotify green */
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #168f3d; /* Darker green */
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+`;
+
+const App = () => {
   const [audioFiles, setAudioFiles] = useState([]);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
-  // Load audio files from local storage on initial render
   useEffect(() => {
     const storedAudioFiles =
       JSON.parse(localStorage.getItem("audioFiles")) || [];
     setAudioFiles(storedAudioFiles);
   }, []);
 
-  // Save audio files to local storage when audioFiles state changes
   useEffect(() => {
     localStorage.setItem("audioFiles", JSON.stringify(audioFiles));
   }, [audioFiles]);
@@ -29,8 +68,26 @@ function App() {
   };
 
   return (
-    <div>
-      <input type="file" accept="audio/mp3" onChange={handleFileUpload} />
+    <Container>
+      <Header>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "2cm",
+          }}
+        >
+          <Title style={{ color: "#fff", fontSize: "2rem" }}>
+            Spotify Player
+          </Title>
+        </div>
+      </Header>
+      <br />
+      <FileInput>
+        Upload Audio File
+        <input type="file" accept="audio/mp3" onChange={handleFileUpload} />
+      </FileInput>
       <Playlist
         audioFiles={audioFiles}
         setCurrentTrackIndex={setCurrentTrackIndex}
@@ -40,8 +97,8 @@ function App() {
         currentTrackIndex={currentTrackIndex}
         onPlayNext={handlePlayNext}
       />
-    </div>
+    </Container>
   );
-}
+};
 
 export default App;
